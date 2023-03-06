@@ -1,0 +1,35 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* @apply components {
+  .input-field {
+    @apply;
+  }
+} */
+
+@layer base {
+  input[type="number"]::-webkit-inner-spin-button,
+  input[type="number"]::-webkit-outer-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+  }
+
+  body {
+    @apply bg-white dark:bg-black;
+  }
+
+  button {
+    color: black;
+  }
+}
+
+@layer components {
+  .input-field {
+    @apply bg-slate-200 dark:bg-dark border-none w-72 mb-4 rounded-md p-2 focus:outline-none focus:outline-green-light text-black dark:text-white;
+  }
+}
+
+.theme-toggle {
+  cursor: pointer;
+}
