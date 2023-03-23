@@ -26,9 +26,9 @@ const Home = () => {
 
     let number = mobileNumber.replace(/[^\w\s]/gi, "").replace(/ /g, "");
 
-    let url = `https://web.whatsapp.com/send?phone=${number}`;
-    url += `&text=${encodeURI(message)}&app_absent=0`;
-    window.open(url);
+   
+
+    window.open(isMobile ? `https://api.whatsapp.com/send/?phone=${number}&text=${message}&type=phone_number&app_absent=0` : `https://web.whatsapp.com/send?phone=${number}&text=${message}&app_absent=0`);
   };
 
   return (
