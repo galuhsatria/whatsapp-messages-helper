@@ -24,20 +24,14 @@ const Home = () => {
 
   const onSubmit = (e) => {
     e.preventDefault();
+
     let number = mobileNumber.replace(/[^\w\s]/gi, "").replace(/ /g, "");
 
-    // window.open(isMobile ? `https://wa.me/${number}` : `https://web.whatsapp.com/send?phone=${number}&text=${message}&app_absent=0`);
+    const mobileUrl = `https://api.whatsapp.com/send?phone=${number}${message ? `&text=${encodeURIComponent(message)}` : ""}`;
 
-    const urlMobile = `https://api.whatsapp.com/send?phone=${number}${
-      message ? `&text=${encodeURIComponent(message)}` : ''
-    }`;
+    let browserUrl = `https://web.whatsapp.com/send?phone=${number}&text=${encodeURI(message)}&app_absent=0`;
 
-    const urlBrowser = `https://web.whatsapp.com/send?phone=${number}&text=${message}&app_absent=0`;
-
-
-    window.open(isMobile ? urlMobile : urlBrowser, '_blank');
-
-    
+    window.open(isMobile ? mobileUrl : browserUrl, "_blank");
   };
 
   return (
@@ -51,20 +45,14 @@ const Home = () => {
           <input type="number" id="" name="mobileNumber" value={mobileNumber} onChange={onChange} required className="input-field" placeholder="Ex 6285237683757" />
         </div>
         <div>
-          <p className="text-sm mb-2 text-black dark:text-white">
-            Message (optional)
-          </p>
-          <textarea cols="30" rows="10" placeholder="Message" name="message" value={message} onChange={onChange} required className="input-field h-28 top-0 resize-none mb-0 " maxLength={CHARACTER_LIMIT}></textarea>
+          <p className="text-sm mb-2 text-black dark:text-white">Message (optional)</p>
+          <textarea cols="30" rows="10" placeholder="Message" name="message" value={message} onChange={onChange} className="input-field h-28 top-0 resize-none mb-0 " maxLength={CHARACTER_LIMIT}></textarea>
           <p className="tex-black dark:text-white">
             {message.length} / {CHARACTER_LIMIT}
           </p>
         </div>
         <div className="mt-4">
-          <button
-            onClick={onSubmit}
-            disabled={mobileNumber.length < 12 || message.length > CHARACTER_LIMIT}
-            className="bg-green-light text-white py-2 px-10 font-semibold rounded-md disabled:opacity-30 flex items-center gap-2"
-          >
+          <button onClick={onSubmit} disabled={mobileNumber.length < 12 || message.length > CHARACTER_LIMIT} className="bg-green-light text-white py-2 px-10 font-semibold rounded-md disabled:opacity-30 flex items-center gap-2">
             Send <FaPaperPlane />
           </button>
         </div>
