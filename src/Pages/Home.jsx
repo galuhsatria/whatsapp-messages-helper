@@ -25,9 +25,13 @@ const Home = () => {
     e.preventDefault();
 
     let number = mobileNumber.replace(/[^\w\s]/gi, "").replace(/ /g, "");
-   
-    window.open(isMobile ? `https://wa.me/${number}` : `https://web.whatsapp.com/send?phone=${number}&text=${message}&app_absent=0`);
-  };
+    const link = `https://api.whatsapp.com/send?phone=${number}${
+      message ? `&text=${encodeURIComponent(message)}` : ''
+    }`;
+
+    window.open(link, '_blank');
+
+    };
 
   return (
     <div className="flex justify-center  font-poppins home h-screen">
