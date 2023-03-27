@@ -45,9 +45,9 @@ const Home = () => {
         </div>
         <div>
           <p className="text-sm mb-2 text-black dark:text-white">
-            Message <span className="text-red-700">*</span>
+            Message (optional) 
           </p>
-          <textarea cols="30" rows="10" placeholder="Message" name="message" value={message} onChange={onChange} required className="input-field h-28 top-0 resize-none mb-0 " maxLength={CHARACTER_LIMIT}></textarea>
+          <textarea cols="30" rows="10" placeholder="Message" name="message" value={message} onChange={onChange} className="input-field h-28 top-0 resize-none mb-0 " maxLength={CHARACTER_LIMIT}></textarea>
           <p className="tex-black dark:text-white">
             {message.length} / {CHARACTER_LIMIT}
           </p>
@@ -55,7 +55,7 @@ const Home = () => {
         <div className="mt-4">
           <button
             onClick={onSubmit}
-            disabled={mobileNumber.length < 12 || message.length > CHARACTER_LIMIT || message.length < 1}
+            disabled={mobileNumber.length < 12 || message.length > CHARACTER_LIMIT}
             className="bg-green-light text-white py-2 px-10 font-semibold rounded-md disabled:opacity-30 flex items-center gap-2"
           >
             Send <FaPaperPlane />
