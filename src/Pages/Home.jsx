@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { FaPaperPlane } from "react-icons/fa";
+import { isMobile } from "react-device-detect";
 
 import PropTypes from "prop-types";
 
@@ -23,12 +24,12 @@ const Home = () => {
 
   const onSubmit = (e) => {
     e.preventDefault();
-
     let number = mobileNumber.replace(/[^\w\s]/gi, "").replace(/ /g, "");
 
-    let url = `https://web.whatsapp.com/send?phone=${number}`;
-    url += `&text=${encodeURI(message)}&app_absent=0`;
-    window.open(url);
+   
+
+    return window.open(isMobile ? `https://wa.me/${number}` : `https://web.whatsapp.com/send?phone=${number}&text=${message}&app_absent=0`);
+
   };
 
   return (
