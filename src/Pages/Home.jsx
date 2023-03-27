@@ -29,7 +29,7 @@ const Home = () => {
    
 
    
-    return window.open(isMobile ? `https://wa.me/${number} : `https://web.whatsapp.com/send?phone=${number}&text=${message}&app_absent=0`);
+    return window.open(isMobile ? `https://wa.me/${number}` : `https://web.whatsapp.com/send?phone=${number}&text=${message}&app_absent=0`);
   };
 
   return (
