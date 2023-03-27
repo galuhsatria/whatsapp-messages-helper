@@ -26,7 +26,18 @@ const Home = () => {
     e.preventDefault();
     let number = mobileNumber.replace(/[^\w\s]/gi, "").replace(/ /g, "");
 
-    window.open(isMobile ? `https://wa.me/${number}` : `https://web.whatsapp.com/send?phone=${number}&text=${message}&app_absent=0`);
+    // window.open(isMobile ? `https://wa.me/${number}` : `https://web.whatsapp.com/send?phone=${number}&text=${message}&app_absent=0`);
+
+    const urlMobile = `https://api.whatsapp.com/send?phone=${number}${
+      message ? `&text=${encodeURIComponent(message)}` : ''
+    }`;
+
+    const urlBrowser = `https://web.whatsapp.com/send?phone=${number}&text=${message}&app_absent=0`;
+
+
+    window.open(isMobile ? urlMobile : urlBrowser, '_blank');
+
+    
   };
 
   return (
@@ -41,7 +52,7 @@ const Home = () => {
         </div>
         <div>
           <p className="text-sm mb-2 text-black dark:text-white">
-            Message <span className="text-red-700">*</span>
+            Message (optional)
           </p>
           <textarea cols="30" rows="10" placeholder="Message" name="message" value={message} onChange={onChange} required className="input-field h-28 top-0 resize-none mb-0 " maxLength={CHARACTER_LIMIT}></textarea>
           <p className="tex-black dark:text-white">
@@ -51,7 +62,7 @@ const Home = () => {
         <div className="mt-4">
           <button
             onClick={onSubmit}
-            disabled={mobileNumber.length < 12 || message.length > CHARACTER_LIMIT || message.length < 1}
+            disabled={mobileNumber.length < 12 || message.length > CHARACTER_LIMIT}
             className="bg-green-light text-white py-2 px-10 font-semibold rounded-md disabled:opacity-30 flex items-center gap-2"
           >
             Send <FaPaperPlane />
