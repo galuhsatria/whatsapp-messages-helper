@@ -25,11 +25,8 @@ const Home = () => {
     e.preventDefault();
 
     let number = mobileNumber.replace(/[^\w\s]/gi, "").replace(/ /g, "");
-
    
-
-   
-    return window.open(isMobile ? `https://wa.me/${number}` : `https://web.whatsapp.com/send?phone=${number}&text=${message}&app_absent=0`);
+    window.open(isMobile ? `https://wa.me/${number}` : `https://web.whatsapp.com/send?phone=${number}&text=${message}&app_absent=0`);
   };
 
   return (
