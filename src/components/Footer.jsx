@@ -17,7 +17,7 @@ const Footer = () => {
             <FaGithub className="text-2xl hover:text-black" />
           </a>
         </div>
-        <p className="flex items-center gap-1 font-poppins text-black dark:text-white">
+        <p className="flex items-center gap-1 text-black dark:text-white">
           Galuh Satria | Make With <FaHeart className="text-red-600" />
         </p>
       </div>

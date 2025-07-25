@@ -6,7 +6,7 @@ const Navbar = () => {
   const [colorTheme, setTheme] = DarkMode();
   return (
     <div>
-      <nav className="flex items-center drop-shadow-lg fixed w-screen justify-around bg-white dark:bg-dark py-5 font-poppins">
+      <nav className="flex items-center drop-shadow-lg fixed w-screen justify-around bg-white dark:bg-dark py-5">
         <div className="nav-logo flex flex-row gap-3 items-center">
           <FaWhatsapp className="text-green-light text-2xl" />
           <p className="text-green-light dark:text-white">WhatsApp Helper</p>
